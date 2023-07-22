@@ -12,14 +12,11 @@ php artisan migrate
 php artisan test
 ```
 
-### postman collection & environment file has been added here with name of
+### postman collection & environment file has been added respectively
 
-Small World API.postman_collection.json
+**[POSTMAN COLLECTION FILE (Small World API.postman_collection.json)](https://github.com/zohaibtariq/swapi.dev/blob/development/Small%20World%20API%20(LOCAL).postman_environment.json)**
 
-Small World API (LOCAL).postman_environment.json
-
-respectively.
-
+**[POSTMAN ENVIRONMENT FILE (Small World API (LOCAL).postman_environment.json)](https://github.com/zohaibtariq/swapi.dev/blob/development/Small%20World%20API.postman_collection.json)**
 
 ## NOTE
 
