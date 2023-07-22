@@ -4,6 +4,7 @@
 /public/hot
 /public/storage
 /storage/*.key
+commands
 /vendor
 .env
 .env.backup
@@ -19,4 +20,3 @@ yarn-error.log
 /.vscode
 .DS_Store
 .editorconfig
-.env.example
