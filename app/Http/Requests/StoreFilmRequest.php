@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreFilmRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class StoreFilmRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -22,7 +23,12 @@ class StoreFilmRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => ['required', 'string'],
+            'director_id' => ['required', 'integer'],
+            'producer_id' => ['required', 'integer'],
+            'release_date' => ['required'],
+            'opening_crawl' => ['nullable', 'string'],
+            'episode_id' => ['nullable', 'integer'],
         ];
     }
 }
