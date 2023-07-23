@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -28,6 +29,6 @@ class RegisterTest extends TestCase
             'password_confirmation' => 'secret123',
         ]))
             ->assertCreated();
-        $this->assertDatabaseHas('users', $userData);
+        $this->assertDatabaseHas((new User())->getTable(), $userData);
     }
 }
