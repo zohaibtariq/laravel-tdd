@@ -19,7 +19,6 @@ class RegisterTest extends TestCase
      */
     public function test_a_user_can_register(): void
     {
-        // $this->withExceptionHandling();
         $userData = [
             'name' => $this->faker->name,
             'email' => $this->faker->email,

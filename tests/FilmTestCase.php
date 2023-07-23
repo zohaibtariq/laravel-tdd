@@ -10,7 +10,6 @@ use App\Models\Species;
 use App\Models\Starship;
 use App\Models\Vehicle;
 use Illuminate\Foundation\Testing\WithFaker;
-//use Laravel\Sanctum\Sanctum;
 
 abstract class FilmTestCase extends TestCase
 {
@@ -93,31 +92,5 @@ abstract class FilmTestCase extends TestCase
     function createSpecie($args = []){
         return Species::factory()->create($args);
     }
-
-//    function createToDoLists($args = [])
-//    {
-//        // TodoList::factory()->count(1)->create() && TodoList::factory()->create() are not same
-//        // count() creates array of objects while without count give direct individual model object
-//        return TodoList::factory()->count(2)->create($args);
-//    }
-//
-//    function createTasks($args = [])
-//    {
-//        return Task::factory()->count(1)->create($args);
-//    }
-//
-//    function createUser($args = []){
-//        return User::factory()->create($args);
-//    }
-//
-//    function createAuthUser(){
-//        $user = $this->createUser();
-//        Sanctum::actingAs($user);
-//        return $user;
-//    }
-//
-//    function createLabel($args = []){
-//        return Label::factory()->create($args);
-//    }
 
 }
