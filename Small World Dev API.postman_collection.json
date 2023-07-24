@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "6607b6e8-8bed-4a79-8208-aae184b8003f",
+		"name": "Small World Dev API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7973098",
+		"_collection_link": "https://restless-crescent-348583.postman.co/workspace/Awais-Alliance-Drive-Way-Work-S~318e1f44-d844-48ed-ae2a-fabcf3198efb/collection/7973098-6607b6e8-8bed-4a79-8208-aae184b8003f?action=share&creator=7973098&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "swapi.dev",
+			"item": [
+				{
+					"name": "planets",
+					"item": [
+						{
+							"name": "planets",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{swapi.dev}}planets",
+									"host": [
+										"{{swapi.dev}}planets"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "planet detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{swapi.dev}}planets/1",
+									"host": [
+										"{{swapi.dev}}planets"
+									],
+									"path": [
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "films",
+					"item": [
+						{
+							"name": "films",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{swapi.dev}}films?page=1",
+									"host": [
+										"{{swapi.dev}}films"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "film detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{swapi.dev}}films/4",
+									"host": [
+										"{{swapi.dev}}films"
+									],
+									"path": [
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "people",
+					"item": [
+						{
+							"name": "people",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{swapi.dev}}people?page=9",
+									"host": [
+										"{{swapi.dev}}people"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "9"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "people detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{swapi.dev}}people/1",
+									"host": [
+										"{{swapi.dev}}people"
+									],
+									"path": [
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "starships",
+					"item": [
+						{
+							"name": "starships",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{swapi.dev}}starships?page=4",
+									"host": [
+										"{{swapi.dev}}starships"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "starships detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{swapi.dev}}starships/9",
+									"host": [
+										"{{swapi.dev}}starships"
+									],
+									"path": [
+										"9"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "vehicles",
+					"item": [
+						{
+							"name": "vehicles",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{swapi.dev}}vehicles?page=4",
+									"host": [
+										"{{swapi.dev}}vehicles"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "vehicles detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{swapi.dev}}vehicles/4",
+									"host": [
+										"{{swapi.dev}}vehicles"
+									],
+									"path": [
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "species",
+					"item": [
+						{
+							"name": "species",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{swapi.dev}}species?page=4",
+									"host": [
+										"{{swapi.dev}}species"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "species detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{swapi.dev}}species/37",
+									"host": [
+										"{{swapi.dev}}species"
+									],
+									"path": [
+										"37"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

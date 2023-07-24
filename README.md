@@ -20,4 +20,4 @@ php artisan test
 
 ## NOTE
 
-strongly suggest to use it with **[docker click here](https://github.com/zohaibtariq/swdocker)**
+strongly suggest to use it with **[docker](https://github.com/zohaibtariq/swdocker)**

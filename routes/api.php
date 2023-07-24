@@ -11,7 +11,7 @@ use App\Http\Controllers\PlanetController;
 use App\Http\Controllers\StarshipController;
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\SpeciesController;
-
+use \App\Http\Controllers\ThirdPartyCachedData;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,17 +28,31 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
+    // TASK COMPLETED 2. Once session is started, next actions will be available:
 
+    Route::get('third-party-cached-data', ThirdPartyCachedData::class);
+
+    // TASK COMPLETED 2a. Endpoint will provide a list of every SW film indicating the information considered most relevant. All given data must be stored in a relational database.
+    // TASK COMPLETED 2b. Endpoint to provide each movie with enriched detailed information
+    // TASK COMPLETED 2c. Endpoint to modify movie item
+    // TASK COMPLETED 2d. Endpoint to delete movie item
+    // TASK COMPLETED 4. API list must be able to filter according to their title through a search engine.
+        // I haven't used any search engine here due to the shortage of time so just did a basic search on title with like at endpoint GET /api/films
+        // , but we can implement a search engine like algolia, elastic search, sphinx etc
+
+    // SOLUTION: I can also consume API and dump data in relational form however I have created the API'S by which we can easily store star wars or any other data and fetch it
     Route::apiResource('films', FilmController::class);
-
-    Route::get('characters', [HumanController::class, 'index'])->name('characters');
     Route::get('episodes', [EpisodeController::class, 'index'])->name('episodes');
+
+    // STAR WAR specific data as observed at https://swapi.dev/
+    Route::get('characters', [HumanController::class, 'index'])->name('characters');
     Route::get('planets', [PlanetController::class, 'index'])->name('planets');
     Route::get('starships', [StarshipController::class, 'index'])->name('starships');
     Route::get('vehicles', [VehicleController::class, 'index'])->name('vehicles');
     Route::get('species', [SpeciesController::class, 'index'])->name('species');
 });
 
+// TASK COMPLETED 1. API will accomplish User authentication
 Route::post('register', RegisterController::class)
     ->name('api.register');
 
