@@ -11,8 +11,55 @@ use \Illuminate\Http\Request;
 class StarshipController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
+     * @OA\Get(
+     **     path="/api/starships",
+     *      tags={"StarWars"},
+     *      summary="Display listing of starships",
+     *      description="Display a list of starships with pagination",
+     *      operationId="ListingOfAlllStarships",
+     *      security={{"sanctum":{}}},
+     *  @OA\Parameter(
+     *      name="page",
+     *      in="query",
+     *      required=false,
+     *      @OA\Schema(
+     *       type="integer",
+     *       format="int64",
+     *       example=1
+     *      )
+     *   ),
+     *  @OA\Parameter(
+     *      name="limit",
+     *      in="query",
+     *      required=false,
+     *      @OA\Schema(
+     *       type="integer",
+     *       format="int64",
+     *       example=20
+     *      )
+     *   ),
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success"
+     *   ),
+     *   @OA\Response(
+     *      response=401,
+     *       description="Unauthenticated"
+     *   ),
+     *   @OA\Response(
+     *      response=400,
+     *      description="Bad Request"
+     *   ),
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *)
+     **/
     public function index(Request $request)
     {
         return Starship::orderBy('id', 'DESC')->paginate($request->limit?:10);
