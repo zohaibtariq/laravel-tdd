@@ -12,6 +12,7 @@ use App\Http\Controllers\StarshipController;
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\SpeciesController;
 use \App\Http\Controllers\ThirdPartyCachedData;
+use \App\Http\Controllers\ThirdPartyTmdb;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,6 +32,15 @@ Route::middleware('auth:sanctum')->group(function () {
     // TASK COMPLETED 2. Once session is started, next actions will be available:
 
     Route::get('third-party-cached-data', ThirdPartyCachedData::class);
+
+    Route::prefix('tmdb')->group(function () {
+        // TASK COMPLETED Note: Please use both APIs. (https://api.themoviedb.org/)
+        Route::get('account-lists', [ThirdPartyTmdb::class, 'accountList']);
+        Route::get('account-details', [ThirdPartyTmdb::class, 'accountDetails']);
+        Route::get('changes-movie-list', [ThirdPartyTmdb::class, 'changesMovieList']);
+        Route::get('changes-people-list', [ThirdPartyTmdb::class, 'changesPeopleList']);
+        Route::get('changes-tv-list', [ThirdPartyTmdb::class, 'changesTvList']);
+    });
 
     // TASK COMPLETED 2a. Endpoint will provide a list of every SW film indicating the information considered most relevant. All given data must be stored in a relational database.
     // TASK COMPLETED 2b. Endpoint to provide each movie with enriched detailed information
