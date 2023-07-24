@@ -1,19 +1,43 @@
 # Small World API
 
-## Project Setup
+## Project Setup (please execute all one by one)
 
-### exec migration cmd
+```
+git clone https://github.com/zohaibtariq/swapi.dev
+```
+```
+cd swapi.dev
+```
+```
+composer install
+```
+```
+php artisan config:clear & php artisan cache:clear && php artisan route:clear && php artisan view:clear
+```
+#
 ```
 php artisan migrate
 ```
+OR
+```
+php artisan migrate:fresh
+```
+#
+```
+php artisan db:seed
+```
 
-### run tests
+#
 ```
 php artisan test
 ```
-
+OR
+```
+./vendor/bin/phpunit --configuration phpunit.xml
+```
+###
 ### postman collection & environment file has been added respectively
-
+###
 ****[POSTMAN COLLECTION FILE (Small World API.postman_collection.json)](https://github.com/zohaibtariq/swapi.dev/blob/development/Small%20World%20API%20(LOCAL).postman_environment.json)****
 
 ****[POSTMAN ENVIRONMENT FILE (Small World API (LOCAL).postman_environment.json)](https://github.com/zohaibtariq/swapi.dev/blob/development/Small%20World%20API.postman_collection.json)****
@@ -25,4 +49,4 @@ php artisan test
 
 ## NOTE
 
-strongly suggest to use it with **[docker](https://github.com/zohaibtariq/swdocker)**
+strongly suggest to use it with **[docker](https://github.com/zohaibtariq/swdocker)** all endpoints can be seen in postman collection file both of these collections has same environment file
