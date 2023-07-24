@@ -15,7 +15,10 @@ class FilmController extends Controller
      */
     public function index(Request $request)
     {
-        return response()->json(Film::orderBy('id', 'DESC')->paginate($request->limit?:10));
+        $filmQuery = Film::orderBy('id', 'DESC');
+        if($request->has('search') && !empty($request->search)) // to test enable it from query param of postman.
+            $filmQuery->where('title', 'like', '%'.$request->search.'%');
+        return response()->json($filmQuery->paginate($request->limit?:10));
     }
 
     /**

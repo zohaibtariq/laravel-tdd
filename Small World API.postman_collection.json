@@ -63,6 +63,19 @@
 				},
 				{
 					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var json = pm.response.json();",
+									"if(json.token)",
+									"    pm.environment.set(\"BearerToken\", json.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -103,6 +116,413 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Films",
+			"item": [
+				{
+					"name": "films",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiURL}}api/films",
+							"host": [
+								"{{BaseApiURL}}api"
+							],
+							"path": [
+								"films"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Molestiae",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "films detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiURL}}api/films/5",
+							"host": [
+								"{{BaseApiURL}}api"
+							],
+							"path": [
+								"films",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "films store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text"
+							},
+							{
+								"key": "Access-Control-Allow-Credentials",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Grand Title",
+									"type": "text"
+								},
+								{
+									"key": "director_id",
+									"value": "9",
+									"type": "text"
+								},
+								{
+									"key": "producer_id",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "release_date",
+									"value": "2023-02-02",
+									"type": "text"
+								},
+								{
+									"key": "episode_id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BaseApiURL}}api/films",
+							"host": [
+								"{{BaseApiURL}}api"
+							],
+							"path": [
+								"films"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "films update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text"
+							},
+							{
+								"key": "Access-Control-Allow-Credentials",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Grand Title\",\n    \"director_id\": \"9\",\n    \"producer_id\": \"10\",\n    \"release_date\": \"2023-02-02\",\n    \"episode_id\": \"2\",\n    \"characters_ids\": [1,2,3],\n    \"starships_ids\": [3,4,5],\n    \"species_ids\": [2,4],\n    \"planets_ids\": [1,2],\n    \"vehicles_ids\": [4,5]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseApiURL}}api/films/5",
+							"host": [
+								"{{BaseApiURL}}api"
+							],
+							"path": [
+								"films",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "films delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text"
+							},
+							{
+								"key": "Access-Control-Allow-Credentials",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseApiURL}}api/films/10",
+							"host": [
+								"{{BaseApiURL}}api"
+							],
+							"path": [
+								"films",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "characters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiURL}}api/characters",
+							"host": [
+								"{{BaseApiURL}}api"
+							],
+							"path": [
+								"characters"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "20",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "episodes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiURL}}api/episodes?page=1&limit=20",
+							"host": [
+								"{{BaseApiURL}}api"
+							],
+							"path": [
+								"episodes"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "planets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiURL}}api/planets?page=1&limit=20",
+							"host": [
+								"{{BaseApiURL}}api"
+							],
+							"path": [
+								"planets"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "species",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiURL}}api/species?page=1&limit=20",
+							"host": [
+								"{{BaseApiURL}}api"
+							],
+							"path": [
+								"species"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "starships",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiURL}}api/starships?page=1&limit=20",
+							"host": [
+								"{{BaseApiURL}}api"
+							],
+							"path": [
+								"starships"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vehicles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiURL}}api/vehicles?page=1&limit=20",
+							"host": [
+								"{{BaseApiURL}}api"
+							],
+							"path": [
+								"vehicles"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CSRF",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Requested-With",
+						"value": "XMLHttpRequest",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "zohaib",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "z@z.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "secret",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "secret",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BaseApiURL}}sanctum/csrf-cookie",
+					"host": [
+						"{{BaseApiURL}}sanctum"
+					],
+					"path": [
+						"csrf-cookie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "third party cached data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseApiURL}}api/third-party-cached-data",
+					"host": [
+						"{{BaseApiURL}}api"
+					],
+					"path": [
+						"third-party-cached-data"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {
