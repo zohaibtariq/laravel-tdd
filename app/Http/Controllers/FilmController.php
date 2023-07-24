@@ -25,7 +25,6 @@ class FilmController extends Controller
      *      required=false,
      *      @OA\Schema(
      *           type="string"
-     *           example=""
      *      )
      *   ),
      *  @OA\Parameter(
