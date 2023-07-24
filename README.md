@@ -14,9 +14,14 @@ php artisan test
 
 ### postman collection & environment file has been added respectively
 
-**[POSTMAN COLLECTION FILE (Small World API.postman_collection.json)](https://github.com/zohaibtariq/swapi.dev/blob/development/Small%20World%20API%20(LOCAL).postman_environment.json)**
+****[POSTMAN COLLECTION FILE (Small World API.postman_collection.json)](https://github.com/zohaibtariq/swapi.dev/blob/development/Small%20World%20API%20(LOCAL).postman_environment.json)****
 
-**[POSTMAN ENVIRONMENT FILE (Small World API (LOCAL).postman_environment.json)](https://github.com/zohaibtariq/swapi.dev/blob/development/Small%20World%20API.postman_collection.json)**
+****[POSTMAN ENVIRONMENT FILE (Small World API (LOCAL).postman_environment.json)](https://github.com/zohaibtariq/swapi.dev/blob/development/Small%20World%20API.postman_collection.json)****
+
+#
+
+###### SMALL WORLD DEV API
+******[POSTMAN COLLECTION FILE (Small World DEV API.postman_collection.json)](https://github.com/zohaibtariq/swapi.dev/blob/development/Small%20World%20Dev%20API.postman_collection.json)******
 
 ## NOTE
 
