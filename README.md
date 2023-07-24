@@ -36,6 +36,12 @@ OR
 ```
 ./vendor/bin/phpunit --configuration phpunit.xml
 ```
+
+### SW API LOCAL URL
+```
+http://sw.api.local/
+```
+
 ###
 ## postman collection & environment file has been added respectively
 ###
