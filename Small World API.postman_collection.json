@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "e5124b39-ec0b-4ca8-afa8-3c11cfe3801e",
-		"name": "Small World API",
+		"name": "Small World - API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "7973098",
 		"_collection_link": "https://restless-crescent-348583.postman.co/workspace/Awais-Alliance-Drive-Way-Work-S~318e1f44-d844-48ed-ae2a-fabcf3198efb/collection/7973098-e5124b39-ec0b-4ca8-afa8-3c11cfe3801e?action=share&creator=7973098&source=collection_link"
@@ -238,7 +238,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"Grand Title\",\n    \"director_id\": \"9\",\n    \"producer_id\": \"10\",\n    \"release_date\": \"2023-02-02\",\n    \"episode_id\": \"2\",\n    \"characters_ids\": [1,2,3],\n    \"starships_ids\": [3,4,5],\n    \"species_ids\": [2,4],\n    \"planets_ids\": [1,2],\n    \"vehicles_ids\": [4,5]\n}",
+							"raw": "{\n    \"title\": \"Grand Title\",\n    \"opening_crawl\": \"brand new opening crawl\",\n    \"director_id\": \"9\",\n    \"producer_id\": \"10\",\n    \"release_date\": \"2023-02-02\",\n    \"episode_id\": \"2\",\n    \"characters_ids\": [1,2,3],\n    \"starships_ids\": [3,4,5],\n    \"species_ids\": [2,4],\n    \"planets_ids\": [1,2],\n    \"vehicles_ids\": [4,5]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -446,6 +446,101 @@
 									"key": "limit",
 									"value": "20"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TMDB",
+			"item": [
+				{
+					"name": "account-lists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiURL}}api/tmdb/account-lists",
+							"host": [
+								"{{BaseApiURL}}api"
+							],
+							"path": [
+								"tmdb",
+								"account-lists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "account-details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiURL}}api/tmdb/account-details",
+							"host": [
+								"{{BaseApiURL}}api"
+							],
+							"path": [
+								"tmdb",
+								"account-details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "changes-movie-list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiURL}}api/tmdb/changes-movie-list",
+							"host": [
+								"{{BaseApiURL}}api"
+							],
+							"path": [
+								"tmdb",
+								"changes-movie-list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "changes-people-list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiURL}}api/tmdb/changes-people-list",
+							"host": [
+								"{{BaseApiURL}}api"
+							],
+							"path": [
+								"tmdb",
+								"changes-people-list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "changes-people-list Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiURL}}api/tmdb/changes-tv-list",
+							"host": [
+								"{{BaseApiURL}}api"
+							],
+							"path": [
+								"tmdb",
+								"changes-tv-list"
 							]
 						}
 					},
