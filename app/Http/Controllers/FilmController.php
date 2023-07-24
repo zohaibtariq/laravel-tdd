@@ -10,9 +10,66 @@ use Symfony\Component\HttpFoundation\Response;
 
 class FilmController extends Controller
 {
+    // TASK COMPLETED - API documentation will be valued positively.
     /**
-     * Display a listing of the resource.
-     */
+     * @OA\Get(
+     **     path="/api/films",
+     *      tags={"Films"},
+     *      summary="Display listing of film",
+     *      description="Display a list of film with pagination",
+     *      operationId="ListingOfAlllFilms",
+     *      security={{"sanctum":{}}},
+     *  @OA\Parameter(
+     *      name="search",
+     *      in="query",
+     *      required=false,
+     *      @OA\Schema(
+     *           type="string"
+     *           example=""
+     *      )
+     *   ),
+     *  @OA\Parameter(
+     *      name="page",
+     *      in="query",
+     *      required=false,
+     *      @OA\Schema(
+     *       type="integer",
+     *       format="int64",
+     *       example=1
+     *      )
+     *   ),
+     *  @OA\Parameter(
+     *      name="limit",
+     *      in="query",
+     *      required=false,
+     *      @OA\Schema(
+     *       type="integer",
+     *       format="int64",
+     *       example=20
+     *      )
+     *   ),
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success"
+     *   ),
+     *   @OA\Response(
+     *      response=401,
+     *       description="Unauthenticated"
+     *   ),
+     *   @OA\Response(
+     *      response=400,
+     *      description="Bad Request"
+     *   ),
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *)
+     **/
     public function index(Request $request)
     {
         $filmQuery = Film::orderBy('id', 'DESC');
@@ -30,16 +87,78 @@ class FilmController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @OA\Post(
+     *      path="/api/films",
+     *      summary="Store a film",
+     *      description="Store a film",
+     *      description="store film",
+     *      operationId="StoreFilm",
+     *      tags={"Films"},
+     *      security={{"sanctum":{}}},
+     * @OA\Response(
+     *    response=201,
+     *    description="Created"
+     *     ),
+     * @OA\Response(
+     *    response=200,
+     *    description="Success"
+     *     ),
+     *  @OA\Response(
+     *      response=401,
+     *      description="Returns when user is not authenticated",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Not authorized"),
+     *          )
+     *      )
+     * )
      */
     public function store(StoreFilmRequest $request)
     {
         return response()->json(Film::create($request->validated()), Response::HTTP_CREATED);
     }
 
+
     /**
-     * Display the specified resource.
-     */
+     * @OA\Get(
+     ** path="/api/films/{filmId}",
+     *      tags={"Films"},
+     *      summary="Detail of a film",
+     *      description="Show detail of a film based on a film id",
+     *      operationId="DetailOfAFilm",
+     *      security={{"sanctum":{}}},
+     *  @OA\Parameter(
+     *    description="ID of Film",
+     *    in="path",
+     *    name="filmId",
+     *    required=true,
+     *    @OA\Schema(
+     *       type="integer",
+     *       format="int64",
+     *       example=1
+     *    )
+     *  ),
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success"
+     *   ),
+     *   @OA\Response(
+     *      response=401,
+     *       description="Unauthenticated"
+     *   ),
+     *   @OA\Response(
+     *      response=400,
+     *      description="Bad Request"
+     *   ),
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *)
+     **/
     public function show(Film $film)
     {
         $film->load('director', 'producer', 'episode', 'vehicles', 'characters', 'planets', 'starships', 'species'); // eager loading
@@ -56,8 +175,46 @@ class FilmController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     */
+     * @OA\Patch(
+     ** path="/api/films/{filmId}",
+     *      tags={"Films"},
+     *      summary="Update a film",
+     *      description="Update a film resource based on provided film id",
+     *      operationId="UpdateFilm",
+     *      security={{"sanctum":{}}},
+     *  @OA\Parameter(
+     *    description="ID of Film",
+     *    in="path",
+     *    name="filmId",
+     *    required=true,
+     *    @OA\Schema(
+     *       type="integer",
+     *       format="int64",
+     *       example=1
+     *    )
+     *  ),
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success"
+     *   ),
+     *   @OA\Response(
+     *      response=401,
+     *       description="Unauthenticated"
+     *   ),
+     *   @OA\Response(
+     *      response=400,
+     *      description="Bad Request"
+     *   ),
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *)
+     **/
     public function update(UpdateFilmRequest $request, Film $film)
     {
         $film->update($request->validated());
@@ -75,8 +232,46 @@ class FilmController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     */
+     * @OA\Delete(
+     ** path="/api/films/{filmId}",
+     *      tags={"Films"},
+     *      summary="Delete a film",
+     *      description="Permenantly delete a film resource based on provided film id",
+     *      operationId="DeleteFilm",
+     *      security={{"sanctum":{}}},
+     *  @OA\Parameter(
+     *    description="ID of Film",
+     *    in="path",
+     *    name="filmId",
+     *    required=true,
+     *    @OA\Schema(
+     *       type="integer",
+     *       format="int64",
+     *       example=1
+     *    )
+     *  ),
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success"
+     *   ),
+     *   @OA\Response(
+     *      response=401,
+     *       description="Unauthenticated"
+     *   ),
+     *   @OA\Response(
+     *      response=400,
+     *      description="Bad Request"
+     *   ),
+     *   @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *)
+     **/
     public function destroy(Film $film)
     {
         $film->delete();

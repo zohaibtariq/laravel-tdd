@@ -36,7 +36,7 @@ OR
 ./vendor/bin/phpunit --configuration phpunit.xml
 ```
 ###
-### postman collection & environment file has been added respectively
+## postman collection & environment file has been added respectively
 ###
 ****[POSTMAN COLLECTION FILE (Small World API.postman_collection.json)](https://github.com/zohaibtariq/swapi.dev/blob/development/Small%20World%20API%20(LOCAL).postman_environment.json)****
 
@@ -50,3 +50,20 @@ OR
 ## NOTE
 
 strongly suggest to use it with **[docker](https://github.com/zohaibtariq/swdocker)** all endpoints can be seen in postman collection file both of these collections has same environment file
+
+# API DOCS
+
+endpoint for api docs is 
+```
+http://sw.api.local/api/docs
+```
+###
+
+Note Authorize bearer token value at api/docs must be in mentioned below format
+```
+Bearer TOKEN_YOU_HAVE_AFTER_LOGIN
+```
+
+```
+Bearer 8|331SmKaJdwMosIB02J14ZkgssdEKitUD4IVqDJVi
+```
