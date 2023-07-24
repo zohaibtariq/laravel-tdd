@@ -14,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return response([
+        'message' => 'API only project, please use postman for available endpoints, Laravel Version ' . app()->version()
+    ]);
 });

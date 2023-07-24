@@ -60,6 +60,6 @@ Route::post('login', LoginController::class)
     ->name('api.login');
 
 Route::get('login', function(){
-    return response(['message' => 'Please login.']);
+    return response(['message' => 'API only project, please login using post man collection']);
 })
     ->name('login');
