@@ -68,3 +68,8 @@ Bearer TOKEN_YOU_HAVE_AFTER_LOGIN
 ```
 Bearer 8|331SmKaJdwMosIB02J14ZkgssdEKitUD4IVqDJVi
 ```
+
+### to generate api docs
+```
+php artisan l5-swagger:generate
+```
