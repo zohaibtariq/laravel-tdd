@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreFilmRequest;
-use App\Http\Requests\UpdateFilmRequest;
 use App\Models\Film;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreFilmRequest;
+use App\Http\Requests\UpdateFilmRequest;
+use App\Repositories\Interfaces\FilmRepositoryInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 class FilmController extends Controller
 {
+    public FilmRepositoryInterface $filmRepository;
+    public function __construct(FilmRepositoryInterface $filmRepository)
+    {
+        $this->filmRepository = $filmRepository;
+    }
+
     // TASK COMPLETED - API documentation will be valued positively.
     /**
      * @OA\Get(
@@ -71,9 +78,11 @@ class FilmController extends Controller
      **/
     public function index(Request $request)
     {
-        $filmQuery = Film::orderBy('id', 'DESC');
-        if($request->has('search') && !empty($request->search)) // to test enable it from query param of postman.
-            $filmQuery->where('title', 'like', '%'.$request->search.'%');
+        $filmQuery = $this->filmRepository->orderBy('id', 'DESC');
+        if($request->has('search') && !empty($request->search)) { // to test enable it from query param of postman.
+            $filmQuery->where('title', 'like', '%' . $request->search . '%');
+//            $filmQuery->search($request->search); // search don't work on builder it only works with direct model call
+        }
         return response()->json($filmQuery->paginate($request->limit?:10));
     }
 
@@ -113,7 +122,7 @@ class FilmController extends Controller
      */
     public function store(StoreFilmRequest $request)
     {
-        return response()->json(Film::create($request->validated()), Response::HTTP_CREATED);
+        return response()->json($this->filmRepository->create($request->validated()), Response::HTTP_CREATED);
     }
 
 

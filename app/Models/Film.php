@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Film extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
 
     const CREATED_AT = 'created';
     const UPDATED_AT = 'edited';
@@ -51,5 +52,18 @@ class Film extends Model
 
     public function episode(){
         return $this->hasOne(Episode::class, 'id', 'episode_id')->select('id', 'title');
+    }
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array<string, mixed>
+     */
+    public function toSearchableArray(): array
+    {
+        return [
+            'title' => $this->title,
+            'opening_crawl' => $this->opening_crawl,
+        ];
     }
 }
