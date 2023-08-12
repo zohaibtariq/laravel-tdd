@@ -3,8 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\Film;
-use App\Repositories\Interfaces\FilmRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
+use App\Repositories\Interfaces\FilmRepositoryInterface;
 
 class FilmRepository implements FilmRepositoryInterface
 {

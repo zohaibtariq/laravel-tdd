@@ -5,10 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePlanetRequest;
 use App\Http\Requests\UpdatePlanetRequest;
 use App\Models\Planet;
+use App\Repositories\Interfaces\PlanetRepositoryInterface;
 use Illuminate\Http\Request;
 
 class PlanetController extends Controller
 {
+
+    public PlanetRepositoryInterface $planetRepository;
+    public function __construct(PlanetRepositoryInterface $planetRepository)
+    {
+        $this->planetRepository = $planetRepository;
+    }
+    
     /**
      * @OA\Get(
      **     path="/api/planets",
@@ -61,7 +69,7 @@ class PlanetController extends Controller
      **/
     public function index(Request $request)
     {
-        return Planet::orderBy('id', 'DESC')->paginate($request->limit?:10);
+        return $this->planetRepository->orderBy('id', 'DESC')->paginate($request->limit?:10);
     }
 
     /**

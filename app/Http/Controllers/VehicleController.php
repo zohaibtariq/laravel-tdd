@@ -5,10 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreVehicleRequest;
 use App\Http\Requests\UpdateVehicleRequest;
 use App\Models\Vehicle;
+use App\Repositories\Interfaces\VehicleRepositoryInterface;
 use Illuminate\Http\Request;
 
 class VehicleController extends Controller
 {
+
+    public VehicleRepositoryInterface $vehicleRepository;
+    public function __construct(VehicleRepositoryInterface $vehicleRepository)
+    {
+        $this->vehicleRepository = $vehicleRepository;
+    }
+    
     /**
      * @OA\Get(
      **     path="/api/vehicles",
@@ -61,7 +69,7 @@ class VehicleController extends Controller
      **/
     public function index(Request $request)
     {
-        return Vehicle::orderBy('id', 'DESC')->paginate($request->limit?:10);
+        return $this->vehicleRepository->orderBy('id', 'DESC')->paginate($request->limit?:10);
     }
 
     /**

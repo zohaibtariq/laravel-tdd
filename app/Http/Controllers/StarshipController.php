@@ -6,10 +6,18 @@ use App\Http\Requests\StoreStarshipRequest;
 use App\Http\Requests\UpdateStarshipRequest;
 
 use App\Models\Starship;
+use App\Repositories\Interfaces\StarshipRepositoryInterface;
 use \Illuminate\Http\Request;
 
 class StarshipController extends Controller
 {
+
+    public StarshipRepositoryInterface $starshipRepository;
+    public function __construct(StarshipRepositoryInterface $starshipRepository)
+    {
+        $this->starshipRepository = $starshipRepository;
+    }
+    
     /**
      * @OA\Get(
      **     path="/api/starships",
@@ -62,7 +70,7 @@ class StarshipController extends Controller
      **/
     public function index(Request $request)
     {
-        return Starship::orderBy('id', 'DESC')->paginate($request->limit?:10);
+        return $this->starshipRepository->orderBy('id', 'DESC')->paginate($request->limit?:10);
     }
 
     /**

@@ -2,13 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreHumanRequest;
-use App\Http\Requests\UpdateHumanRequest;
 use App\Models\Human;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreHumanRequest;
+use App\Http\Requests\UpdateHumanRequest;
+use App\Repositories\Interfaces\HumanRepositoryInterface;
 
 class HumanController extends Controller
 {
+
+    public HumanRepositoryInterface $humanRepository;
+
+    public function __construct(HumanRepositoryInterface $humanRepository)
+    {
+        $this->humanRepository = $humanRepository;
+    }
+
     /**
      * @OA\Get(
      **     path="/api/characters",
@@ -61,7 +70,7 @@ class HumanController extends Controller
      **/
     public function index(Request $request)
     {
-        return Human::orderBy('id', 'DESC')->paginate($request->limit?:10);
+        return $this->humanRepository->orderBy('id', 'DESC')->paginate($request->limit?:10);
     }
 
     /**

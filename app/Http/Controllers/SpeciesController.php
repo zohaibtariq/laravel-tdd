@@ -5,10 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreSpeciesRequest;
 use App\Http\Requests\UpdateSpeciesRequest;
 use App\Models\Species;
+use App\Repositories\Interfaces\SpeciesRepositoryInterface;
 use Illuminate\Http\Request;
 
 class SpeciesController extends Controller
 {
+
+    public SpeciesRepositoryInterface $speciesRepository;
+    public function __construct(SpeciesRepositoryInterface $speciesRepository)
+    {
+        $this->speciesRepository = $speciesRepository;
+    }
+    
     /**
      * @OA\Get(
      **     path="/api/species",
@@ -61,7 +69,7 @@ class SpeciesController extends Controller
      **/
     public function index(Request $request)
     {
-        return Species::orderBy('id', 'DESC')->paginate($request->limit?:10);
+        return $this->speciesRepository->orderBy('id', 'DESC')->paginate($request->limit?:10);
     }
 
     /**

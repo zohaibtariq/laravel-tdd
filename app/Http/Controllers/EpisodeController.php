@@ -2,13 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreEpisodeRequest;
-use App\Http\Requests\UpdateEpisodeRequest;
 use App\Models\Episode;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreEpisodeRequest;
+use App\Http\Requests\UpdateEpisodeRequest;
+use App\Repositories\Interfaces\EpisodeRepositoryInterface;
 
 class EpisodeController extends Controller
 {
+
+    public EpisodeRepositoryInterface $episodeRepository;
+    public function __construct(EpisodeRepositoryInterface $episodeRepository)
+    {
+        $this->episodeRepository = $episodeRepository;
+    }
+    
     /**
      * @OA\Get(
      **     path="/api/episodes",

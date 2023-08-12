@@ -5,9 +5,17 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
+use App\Repositories\Interfaces\UserRepositoryInterface;
 
 class RegisterController extends Controller
 {
+
+    public UserRepositoryInterface $userRepository;
+    public function __construct(UserRepositoryInterface $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
     /**
      * @OA\Post(
      * path="/api/register",
@@ -50,6 +58,6 @@ class RegisterController extends Controller
      */
     public function __invoke(RegisterRequest $request)
     {
-        return User::create($request->validated());
+        return $this->userRepository->create($request->validated());
     }
 }
