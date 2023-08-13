@@ -10,13 +10,15 @@ use Illuminate\Support\Facades\Http;
 
 class ThirdPartyTmdb extends Controller
 {
-    function test(){
+//    function test(){
+//        $time = microtime(true);
+//        $prompt = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at tempus tellus. Nullam tincidunt viverra nibh, eu maximus odio commodo et. In ac mauris venenatis, egestas leo commodo, venenatis nisi. Praesent sodales elit vel nulla cursus, id elementum justo pulvinar. Curabitur ut lectus rhoncus, faucibus massa a, pretium sapien. Vestibulum imperdiet nunc ac eros tempus hendrerit. Quisque maximus eu lorem convallis euismod. Vivamus non enim at nisi dictum consectetur. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc a semper lacus, et sollicitudin elit.';
+//        $promptTokens = CountGptToken::count_token($prompt);
 //        dd(CountGptToken::count());
-//        dd(CountGptToken::count_token('hello world'));
-
+//        dd($promptTokens, microtime(true) - $time);
 //        dd(ChatGptToken::count());
 //        dd(ChatGptToken::count_token('hello world'));
-    }
+//    }
 
     // TASK COMPLETED Note: Please use both APIs. (https://api.themoviedb.org/)
     function accountList(){
