@@ -5,8 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
+//use CountGptToken;
+//use ChatGptToken;
+
 class ThirdPartyTmdb extends Controller
 {
+    function test(){
+//        dd(CountGptToken::count());
+//        dd(CountGptToken::count_token('hello world'));
+
+//        dd(ChatGptToken::count());
+//        dd(ChatGptToken::count_token('hello world'));
+    }
 
     // TASK COMPLETED Note: Please use both APIs. (https://api.themoviedb.org/)
     function accountList(){

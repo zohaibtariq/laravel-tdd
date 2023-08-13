@@ -23,7 +23,7 @@ use \App\Http\Controllers\ThirdPartyTmdb;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
+//Route::get('/', [ThirdPartyTmdb::class, 'test']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

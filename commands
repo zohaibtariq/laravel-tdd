@@ -1,0 +1,7 @@
+composer remove zohaibtariq/chatgpt-token
+composer remove zohaibtariq/count-gpt-token
+
+composer require zohaibtariq/chatgpt-token:dev-master
+composer require zohaibtariq/count-gpt-token:dev-main
+
+composer dump-autoload
